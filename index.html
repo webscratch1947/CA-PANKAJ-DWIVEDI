@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CA Pankaj Dwivedi | Chartered Accountant in Waidhan</title>
+<meta name="description" content="CA Pankaj Dwivedi — Chartered Accountant in Waidhan, Madhya Pradesh. ITR, GST, TDS, accounting, audits, business registrations, and other CA-related services." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  /* Refined Color Palette — Elegant, Premium, Trustworthy */
+  --gold-primary: #C6A15B;
+  --gold-deep: #9B7A3E;
+  --gold-soft: #E6CFA3;
+  --gold-glow: rgba(198, 161, 91, 0.2);
+  --gold-border: rgba(198, 161, 91, 0.25);
+  
+  --bg-deep: #0A0C12;
+  --bg-rich: #0F111A;
+  --bg-surface: #151821;
+  --bg-elevated: #1C202B;
+  --bg-glass: rgba(21, 24, 33, 0.85);
+  
+  --text-primary: #F2F0E9;
+  --text-secondary: #B2B0A6;
+  --text-muted: #6C6A70;
+  --text-accent: #DBCE9F;
+  
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-gold: rgba(198, 161, 91, 0.35);
+  
+  --shadow-sm: 0 10px 30px -10px rgba(0,0,0,0.5);
+  --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 30px rgba(198, 161, 91, 0.08);
+  
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --transition-smooth: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  --transition-bounce: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Loader - Enhanced */
+#loader {
+  position: fixed; inset: 0; z-index: 10000;
+  background: radial-gradient(circle at center, #0A0C12 0%, #05070C 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+#loader.out { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-ring {
+  width: 80px; height: 80px; border: 2px solid rgba(198,161,91,0.2);
+  border-top-color: var(--gold-primary); border-radius: 50%;
+  animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  margin-bottom: 32px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.ld-word {
+  font-family: var(--font-serif); font-size: clamp(32px, 6vw, 56px);
+  font-weight: 400; letter-spacing: 8px; text-transform: uppercase;
+  background: linear-gradient(135deg, #C6A15B, #E6CFA3, #C6A15B);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmerText 2s linear infinite;
+}
+@keyframes shimmerText { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+.ld-sub { font-size: 10px; letter-spacing: 5px; color: var(--text-muted); margin-top: 16px; }
+
+/* Animated Background Canvas */
+#bgCanvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
+
+/* Reduce jank on some PCs */
+#bgCanvas { will-change: transform; }
+
+/* Custom Cursor */
+/* (removed) */
+
+/* Navigation */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  padding: 28px 64px; display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease; backdrop-filter: blur(0px);
+}
+#nav.scrolled {
+  padding: 18px 64px; background: rgba(10, 12, 18, 0.92);
+  backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.nav-brand { text-decoration: none; }
+.brand-name {
+  font-family: var(--font-serif); font-size: 22px; font-weight: 500;
+  letter-spacing: 2px; color: var(--gold-primary); text-transform: uppercase;
+}
+.brand-tag { font-size: 8px; letter-spacing: 3px; color: var(--text-muted); margin-top: 4px; }
+.nav-links { display: flex; gap: 48px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-secondary); text-decoration: none; transition: color 0.3s;
+  position: relative; padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold-primary), var(--gold-soft));
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold-primary); }
+.nav-links a:hover::after { width: 100%; }
+.btn-consult {
+  background: transparent; border: 1px solid var(--gold-primary);
+  padding: 12px 32px; font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-primary); text-decoration: none;
+  transition: all 0.4s; position: relative; overflow: hidden;
+}
+.btn-consult:hover { background: var(--gold-primary); color: var(--bg-deep); box-shadow: 0 4px 15px rgba(198,161,91,0.3); }
+
+/* Hero Section */
+#hero {
+  position: relative; z-index: 2; min-height: 100vh;
+  display: flex; align-items: center; padding: 0 64px;
+  overflow: hidden;
+}
+.hero-content { max-width: 700px; }
+.hero-split { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; width: 100%; }
+.profile-card {
+  background: rgba(21, 24, 33, 0.6);
+  border: 1px solid var(--border-gold);
+  box-shadow: var(--shadow-sm);
+  padding: 28px;
+}
+.profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.profile-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(198,161,91,0.15);
+  border: 1px solid rgba(198,161,91,0.35);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gold-primary);
+}
+.profile-name { font-weight: 600; letter-spacing: 0.2px; }
+.profile-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.profile-list { display: grid; gap: 12px; margin-top: 16px; }
+.profile-pill {
+  display: flex; justify-content: space-between; gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(0,0,0,0.12);
+}
+.pill-label { font-size: 11px; letter-spacing: 1px; color: var(--text-muted); }
+.pill-value { font-weight: 600; color: var(--text-primary); font-variant-numeric: tabular-nums lining-nums; font-feature-settings: "tnum" 1, "lnum" 1; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(198,161,91,0.12); padding: 8px 20px; border-radius: 40px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold-soft); margin-bottom: 32px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(198,161,91,0.2);
+}
+.hero-title {
+  font-family: var(--font-serif); font-size: clamp(52px, 8vw, 96px);
+  font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+.hero-title em { color: var(--gold-primary); font-style: italic; font-weight: 500; }
+.hero-title .sub { font-size: 0.45em; display: block; color: var(--text-secondary); margin-top: 16px; letter-spacing: -0.2px; }
+.hero-desc {
+  font-size: 16px; line-height: 1.8; color: var(--text-secondary);
+  max-width: 540px; margin-bottom: 48px;
+}
+.hero-buttons { display: flex; gap: 24px; flex-wrap: wrap; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-primary), var(--gold-deep));
+  padding: 16px 42px; font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--bg-deep); text-decoration: none;
+  transition: var(--transition-bounce); border-radius: 2px;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(198,161,91,0.35); }
+.btn-outline-gold {
+  padding: 16px 36px; font-size: 11px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold-primary); text-decoration: none;
+  border: 1px solid var(--gold-primary); transition: all 0.3s;
+}
+.btn-outline-gold:hover { background: rgba(198,161,91,0.1); transform: translateY(-2px); }
+.hero-stats {
+  position: absolute; right: 64px; top: 50%; transform: translateY(-50%);
+  background: rgba(21, 24, 33, 0.7); backdrop-filter: blur(12px);
+  padding: 32px; border: 1px solid var(--border-gold); border-radius: 4px;
+  min-width: 280px;
+}
+.stat-item { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border-subtle); }
+.stat-item:last-child { border-bottom: none; }
+.stat-label { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+.stat-value {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  color: var(--gold-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.stat-badge { font-size: 10px; color: #4CAF79; display: flex; align-items: center; gap: 6px; margin-top: 12px; }
+.stat-badge::before { content: ''; width: 6px; height: 6px; background: #4CAF79; border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* Marquee */
+.marquee-section {
+  background: rgba(21, 24, 33, 0.6); border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle); padding: 18px 0; overflow: hidden;
+}
+.marquee-track { display: flex; animation: scrollMarquee 35s linear infinite; gap: 48px; width: max-content; }
+.marquee-item { display: flex; gap: 48px; white-space: nowrap; }
+.marquee-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); font-weight: 500; }
+@keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border-subtle); position: relative; z-index: 2;
+}
+.metric-card {
+  background: var(--bg-surface); padding: 56px 40px; text-align: center;
+  transition: var(--transition-smooth); position: relative; overflow: hidden;
+}
+.metric-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--gold-primary), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.5s;
+}
+.metric-card:hover::before { transform: scaleX(1); }
+.metric-card:hover { background: var(--bg-elevated); transform: translateY(-4px); }
+.metric-number {
+  font-family: var(--font-sans);
+  font-size: 58px;
+  font-weight: 700;
+  color: var(--gold-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.metric-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 12px; }
+
+/* Section Headers */
+.section-header { margin-bottom: 56px; }
+.section-tag {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-primary); margin-bottom: 16px; display: inline-block;
+}
+.section-title {
+  font-family: var(--font-serif); font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400; line-height: 1.15; letter-spacing: -0.02em;
+}
+.section-title em { color: var(--gold-primary); font-style: italic; }
+
+/* Services Grid */
+.services-section { background: var(--bg-rich); padding: 120px 64px; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  background: var(--border-subtle); margin-top: 48px;
+}
+.service-card {
+  background: var(--bg-surface); padding: 48px 36px;
+  transition: all 0.4s; position: relative;
+}
+.service-card:hover { background: var(--bg-elevated); transform: translateY(-6px); }
+.service-icon { font-size: 42px; margin-bottom: 24px; display: inline-block; }
+.service-title { font-family: var(--font-serif); font-size: 26px; font-weight: 500; margin-bottom: 16px; }
+.service-desc { color: var(--text-secondary); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.service-tag {
+  font-size: 9px; letter-spacing: 1px; background: rgba(198,161,91,0.12);
+  padding: 4px 12px; color: var(--gold-soft); border-radius: 20px;
+}
+.service-link { font-size: 11px; letter-spacing: 2px; color: var(--gold-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+.service-link:hover { gap: 14px; }
+
+/* Process Steps */
+.process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  padding: 80px 64px; background: var(--bg-deep);
+}
+.process-step { text-align: center; }
+.step-number {
+  width: 80px; height: 80px; margin: 0 auto 24px;
+  border: 1px solid var(--gold-border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 32px; color: var(--gold-primary);
+  transition: all 0.4s;
+}
+.process-step:hover .step-number { background: var(--gold-primary); color: var(--bg-deep); border-color: var(--gold-primary); transform: scale(1.05); }
+.step-title { font-family: var(--font-serif); font-size: 22px; margin-bottom: 12px; }
+.step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+/* Testimonials */
+.testimonials-section { padding: 120px 64px; background: var(--bg-rich); }
+.testimonial-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  margin-top: 64px;
+}
+.testimonial-card {
+  background: var(--bg-surface); padding: 40px; border: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+.testimonial-card:hover { border-color: var(--gold-border); transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.testimonial-stars { color: var(--gold-primary); margin-bottom: 20px; letter-spacing: 2px; }
+.testimonial-text { font-family: var(--font-serif); font-size: 18px; line-height: 1.6; font-style: italic; margin-bottom: 28px; color: var(--text-primary); }
+.testimonial-author { display: flex; align-items: center; gap: 16px; margin-top: auto; }
+.author-initial { width: 48px; height: 48px; border-radius: 50%; background: rgba(198,161,91,0.15); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 20px; color: var(--gold-primary); }
+.author-name { font-weight: 600; font-size: 15px; }
+.author-role { font-size: 11px; color: var(--text-muted); }
+
+/* CTA Section */
+.cta-section {
+  padding: 120px 64px; text-align: center;
+  background: radial-gradient(ellipse at 50% 30%, rgba(198,161,91,0.08), transparent);
+  position: relative;
+}
+.cta-title { font-family: var(--font-serif); font-size: clamp(42px, 6vw, 72px); font-weight: 400; margin-bottom: 24px; }
+.cta-title em { color: var(--gold-primary); font-style: italic; }
+.cta-desc { max-width: 600px; margin: 0 auto 40px; color: var(--text-secondary); font-size: 16px; }
+.cta-buttons { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.trust-badge { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); }
+
+/* Contact Section */
+.contact-section { padding: 120px 64px; background: var(--bg-surface); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
+  margin-top: 64px;
+}
+.map-embed {
+  width: 100%;
+  height: 360px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(0,0,0,0.15);
+}
+.contact-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.btn-small {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1px solid var(--border-subtle);
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.btn-small:hover { border-color: var(--gold-primary); color: var(--gold-primary); transform: translateY(-1px); }
+.contact-info { display: flex; flex-direction: column; gap: 32px; }
+.contact-item { padding: 20px 0; border-bottom: 1px solid var(--border-subtle); }
+.contact-label { font-size: 10px; letter-spacing: 2px; color: var(--gold-primary); margin-bottom: 8px; }
+.contact-value {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.contact-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.contact-form { display: flex; flex-direction: column; gap: 28px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+.form-control {
+  background: transparent; border: none; border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 0; font-size: 15px; color: var(--text-primary); outline: none;
+  transition: border-color 0.3s;
+}
+.form-control:focus { border-bottom-color: var(--gold-primary); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.submit-btn {
+  background: var(--gold-primary); border: none; padding: 16px 32px;
+  font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bg-deep); cursor: pointer; transition: all 0.3s; width: fit-content;
+}
+.submit-btn:hover { background: var(--gold-deep); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(198,161,91,0.3); }
+
+/* Footer */
+footer {
+  background: var(--bg-rich); padding: 64px 64px 32px;
+  border-top: 1px solid var(--border-subtle);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  margin-bottom: 64px;
+}
+.footer-logo { font-family: var(--font-serif); font-size: 24px; color: var(--gold-primary); margin-bottom: 12px; }
+.footer-desc { color: var(--text-muted); font-size: 13px; line-height: 1.7; margin-bottom: 24px; max-width: 280px; }
+.social-links { display: flex; gap: 12px; }
+.social-link {
+  width: 36px; height: 36px; border: 1px solid var(--border-subtle);
+  display: flex; align-items: center; justify-content: center; text-decoration: none;
+  color: var(--text-secondary); transition: all 0.3s;
+}
+.social-link:hover { border-color: var(--gold-primary); color: var(--gold-primary); }
+.footer-col h4 { font-size: 11px; letter-spacing: 2px; color: var(--gold-primary); margin-bottom: 24px; text-transform: uppercase; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold-primary); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 32px; border-top: 1px solid var(--border-subtle);
+  font-size: 11px; color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  #nav, #hero, .services-section, .process-steps, .testimonials-section, .cta-section, .contact-section, footer { padding-left: 32px; padding-right: 32px; }
+  .hero-stats { display: none; }
+  .services-grid, .testimonial-grid, .process-steps, .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-split { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  #nav { padding: 14px 16px; }
+  .nav-links { display: none; }
+  .btn-consult { display: inline-flex; padding: 10px 14px; font-size: 10px; letter-spacing: 1.5px; }
+  .brand-name { font-size: 14px; letter-spacing: 1px; }
+  .brand-tag { display: none; }
+
+  #hero { padding: 96px 16px 48px; min-height: auto; align-items: flex-start; }
+  .hero-split { grid-template-columns: 1fr; gap: 22px; }
+  .hero-badge { font-size: 10px; letter-spacing: 1.5px; margin-bottom: 18px; }
+  .hero-title { font-size: clamp(34px, 10vw, 48px); margin-bottom: 18px; }
+  .hero-title .sub { font-size: 0.52em; margin-top: 10px; }
+  .hero-desc { font-size: 14px; line-height: 1.75; margin-bottom: 28px; }
+  .hero-buttons { gap: 12px; }
+  .btn-primary, .btn-outline-gold { width: 100%; text-align: center; justify-content: center; padding: 14px 18px; }
+
+  .services-grid, .testimonial-grid, .process-steps, .metrics-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .services-section, .testimonials-section, .cta-section, .contact-section { padding: 88px 16px; }
+  .process-steps { padding: 72px 16px; gap: 34px; }
+  .step-number { width: 64px; height: 64px; font-size: 24px; }
+  .service-card { padding: 34px 22px; }
+  .testimonial-card { padding: 28px 22px; }
+  .cta-buttons { gap: 12px; }
+  .trust-badge { gap: 16px; }
+  .metrics-grid { margin-top: 0; }
+  .metric-card { padding: 36px 22px; }
+  .metric-number { font-size: 44px; }
+  .contact-grid { gap: 36px; margin-top: 38px; }
+  .map-embed { height: 260px; }
+  .section-header { text-align: center; }
+
+  #bgCanvas { opacity: 0.25; }
+}
+
+/* Portfolio feel + anti-glitch: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  #bgCanvas { display: none; }
+  .marquee-track { animation: none !important; }
+}
+
+/* Reveal Animations */
+.reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+.reveal-up.active { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s ease; }
+.reveal-left.active { opacity: 1; transform: translateX(0); }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-ring"></div>
+  <div class="ld-word">PANKAJ</div>
+  <div class="ld-sub">CHARTERED ACCOUNTANT · WAIDHAN</div>
+</div>
+<canvas id="bgCanvas"></canvas>
+
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <div class="brand-name">CA PANKAJ DWIVEDI</div>
+    <div class="brand-tag">CHARTERED ACCOUNTANT · WAIDHAN (M.P.)</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-consult">Call / Consult</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-split">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Portfolio · Chartered Accountant · Waidhan, Madhya Pradesh ✦</div>
+      <h1 class="hero-title">
+        CA Pankaj <em>Dwivedi</em>
+        <span class="sub">ITR · GST · TDS · Accounting · Compliance</span>
+      </h1>
+      <p class="hero-desc">I help individuals and small businesses stay compliant and stress-free with filings, registrations, and ongoing support — with a clear checklist, transparent process, and on-time delivery.</p>
+      <div class="hero-buttons">
+        <a href="tel:+918871887087" class="btn-primary">Call Now</a>
+        <a href="#work" class="btn-outline-gold">View Work →</a>
+      </div>
+    </div>
+    <aside class="profile-card reveal-up">
+      <div class="profile-top">
+        <div class="profile-avatar" aria-hidden="true">PD</div>
+        <div>
+          <div class="profile-name">CA Pankaj Dwivedi</div>
+          <div class="profile-sub">Waidhan, Madhya Pradesh · Closes 7:00 PM</div>
+        </div>
+      </div>
+      <div class="profile-list">
+        <div class="profile-pill"><span class="pill-label">Google Rating</span><span class="pill-value">5.0★</span></div>
+        <div class="profile-pill"><span class="pill-label">Reviews</span><span class="pill-value">8+</span></div>
+        <div class="profile-pill"><span class="pill-label">Phone</span><span class="pill-value">088718 87087</span></div>
+      </div>
+      <div class="contact-actions" style="margin-top:16px;">
+        <a class="btn-small" href="#contact">Map</a>
+        <a class="btn-small" href="https://www.google.com/maps/place/CA+PANKAJ+DWIVEDI/@24.0714228,82.6028168,2941m/data=!3m1!1e3!4m10!1m2!2m1!1sshop+no+97+first+floor+near+satya+hotel+beside+pragya+battery+waidhan+madhya+pradesh+486886!3m6!1s0x398f372ad71c05bb:0xf981ec5e393e9dec!8m2!3d24.0714228!4d82.6218712!15sCltzaG9wIG5vIDk3IGZpcnN0IGZsb29yIG5lYXIgc2F0eWEgaG90ZWwgYmVzaWRlIHByYWd5YSBiYXR0ZXJ5IHdhaWRoYW4gbWFkaHlhIHByYWRlc2ggNDg2ODg2Wl0iW3Nob3Agbm8gOTcgZmlyc3QgZmxvb3IgbmVhciBzYXR5YSBob3RlbCBiZXNpZGUgcHJhZ3lhIGJhdHRlcnkgd2FpZGhhbiBtYWRoeWEgcHJhZGVzaCA0ODY4ODaSARRjaGFydGVyZWRfYWNjb3VudGFudJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOS04wdExhM1pSUlJBQuABAPoBBAgAEBc!16s%2Fg%2F11sv56nk33?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Open in Maps</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-text">ITR Filing</span><span class="marquee-text">✦</span><span class="marquee-text">GST Registration & Returns</span><span class="marquee-text">✦</span><span class="marquee-text">TDS</span><span class="marquee-text">✦</span><span class="marquee-text">Accounting</span><span class="marquee-text">✦</span><span class="marquee-text">Audit</span><span class="marquee-text">✦</span><span class="marquee-text">Business Registrations</span><span class="marquee-text">✦</span></div>
+    <div class="marquee-item"><span class="marquee-text">ITR Filing</span><span class="marquee-text">✦</span><span class="marquee-text">GST Registration & Returns</span><span class="marquee-text">✦</span><span class="marquee-text">TDS</span><span class="marquee-text">✦</span><span class="marquee-text">Accounting</span><span class="marquee-text">✦</span><span class="marquee-text">Audit</span><span class="marquee-text">✦</span><span class="marquee-text">Business Registrations</span><span class="marquee-text">✦</span></div>
+  </div>
+</div>
+
+<div class="metrics-grid">
+  <div class="metric-card reveal-up"><div class="metric-number">5.0★</div><div class="metric-label">Google Rating</div></div>
+  <div class="metric-card reveal-up"><div class="metric-number">8+</div><div class="metric-label">Google Reviews</div></div>
+  <div class="metric-card reveal-up"><div class="metric-number">Mon–Sat</div><div class="metric-label">Working Days</div></div>
+  <div class="metric-card reveal-up"><div class="metric-number">7 PM</div><div class="metric-label">Closes</div></div>
+</div>
+
+<section id="about" class="services-section" style="padding-top:88px;">
+  <div class="section-header">
+    <div class="section-tag">About</div>
+    <h2 class="section-title">Local CA support, with a <em>clear process</em></h2>
+  </div>
+  <div style="max-width:900px; color:var(--text-secondary); font-size:15px; line-height:1.9;">
+    I work with salaried individuals, small businesses, and shop owners in and around Waidhan for Income Tax, GST, TDS, accounting support, and common registrations. My focus is simple: correct filing, on time, with clear communication.
+  </div>
+</section>
+
+<section id="work" class="testimonials-section" style="padding-top:88px;">
+  <div class="section-header">
+    <div class="section-tag">Work</div>
+    <h2 class="section-title">Typical cases I help with <em>often</em></h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal-up">
+      <div class="testimonial-stars">Case</div>
+      <p class="testimonial-text">ITR filing for salaried / pension with deductions and document checklist.</p>
+      <div class="testimonial-author"><div class="author-initial">IT</div><div><div class="author-name">Income Tax</div><div class="author-role">ITR · Notices support</div></div></div>
+    </div>
+    <div class="testimonial-card reveal-up">
+      <div class="testimonial-stars">Case</div>
+      <p class="testimonial-text">GST registration and monthly/quarterly returns with basic reconciliation.</p>
+      <div class="testimonial-author"><div class="author-initial">GS</div><div><div class="author-name">GST</div><div class="author-role">Registration · Returns</div></div></div>
+    </div>
+    <div class="testimonial-card reveal-up">
+      <div class="testimonial-stars">Case</div>
+      <p class="testimonial-text">TDS return filing, challans, and common error/correction handling.</p>
+      <div class="testimonial-author"><div class="author-initial">TD</div><div><div class="author-name">TDS / TCS</div><div class="author-role">Returns · Corrections</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services-section">
+  <div class="section-header">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">CA services for <em>individuals & businesses</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal-up"><div class="service-icon">🧾</div><h3 class="service-title">Income Tax (ITR)</h3><p class="service-desc">ITR filing, tax planning basics, notices support and guidance.</p><div class="service-tags"><span class="service-tag">Individuals</span><span class="service-tag">Business</span><span class="service-tag">Notices</span></div><a href="#contact" class="service-link">Get help →</a></div>
+    <div class="service-card reveal-up"><div class="service-icon">🧩</div><h3 class="service-title">GST Services</h3><p class="service-desc">GST registration, returns (GSTR), compliance and reconciliations.</p><div class="service-tags"><span class="service-tag">Registration</span><span class="service-tag">Returns</span><span class="service-tag">Compliance</span></div><a href="#contact" class="service-link">Get help →</a></div>
+    <div class="service-card reveal-up"><div class="service-icon">📌</div><h3 class="service-title">TDS / TCS</h3><p class="service-desc">TDS return filing, challans, certificates, and error resolution.</p><div class="service-tags"><span class="service-tag">Payments</span><span class="service-tag">Returns</span><span class="service-tag">Corrections</span></div><a href="#contact" class="service-link">Get help →</a></div>
+    <div class="service-card reveal-up"><div class="service-icon">📒</div><h3 class="service-title">Accounting & Bookkeeping</h3><p class="service-desc">Monthly bookkeeping, ledger review, and basic MIS support.</p><div class="service-tags"><span class="service-tag">Books</span><span class="service-tag">MIS</span><span class="service-tag">Support</span></div><a href="#contact" class="service-link">Get help →</a></div>
+    <div class="service-card reveal-up"><div class="service-icon">✅</div><h3 class="service-title">Audit & Reports</h3><p class="service-desc">Tax audit support and reports required for compliance.</p><div class="service-tags"><span class="service-tag">Audit</span><span class="service-tag">Reports</span><span class="service-tag">Compliance</span></div><a href="#contact" class="service-link">Get help →</a></div>
+    <div class="service-card reveal-up"><div class="service-icon">🏢</div><h3 class="service-title">Business Registrations</h3><p class="service-desc">Guidance for common registrations and ongoing statutory needs.</p><div class="service-tags"><span class="service-tag">Startup</span><span class="service-tag">MSME</span><span class="service-tag">Compliance</span></div><a href="#contact" class="service-link">Get help →</a></div>
+  </div>
+</section>
+
+<section id="process" class="process-steps">
+  <div class="process-step reveal-up"><div class="step-number">01</div><h3 class="step-title">Connect</h3><p class="step-desc">Call or message with your requirement and basic details.</p></div>
+  <div class="process-step reveal-up"><div class="step-number">02</div><h3 class="step-title">Checklist</h3><p class="step-desc">We confirm documents needed and timelines clearly upfront.</p></div>
+  <div class="process-step reveal-up"><div class="step-number">03</div><h3 class="step-title">Work & Filing</h3><p class="step-desc">Accurate preparation, filing and compliance completion.</p></div>
+  <div class="process-step reveal-up"><div class="step-number">04</div><h3 class="step-title">Support</h3><p class="step-desc">Follow-ups, corrections, and guidance whenever required.</p></div>
+</section>
+
+<section id="testimonials" class="testimonials-section">
+  <div class="section-header">
+    <div class="section-tag">Reviews</div>
+    <h2 class="section-title">Trusted locally in <em>Waidhan</em></h2>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card reveal-up"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"All kinds of CA related services."</p><div class="testimonial-author"><div class="author-initial">AD</div><div><div class="author-name">Amit Dubey</div><div class="author-role">Local client</div></div></div></div>
+    <div class="testimonial-card reveal-up"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Clear guidance and timely filing. The process was smooth and transparent."</p><div class="testimonial-author"><div class="author-initial">SP</div><div><div class="author-name">Shreya Pandey</div><div class="author-role">ITR filing</div></div></div></div>
+    <div class="testimonial-card reveal-up"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Quick responses and helpful support for GST and ongoing compliance."</p><div class="testimonial-author"><div class="author-initial">RS</div><div><div class="author-name">Rahul Singh</div><div class="author-role">GST services</div></div></div></div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2 class="cta-title">Need help with ITR, GST or compliance?<br>Let’s get it <em>done right</em></h2>
+  <p class="cta-desc">Call now or send your requirements — you’ll get a clear checklist of documents and the next steps.</p>
+  <div class="cta-buttons"><a href="tel:+918871887087" class="btn-primary">Call: 088718 87087</a><a href="#contact" class="btn-outline-gold">Get Directions →</a></div>
+  <div class="trust-badge"><div class="trust-item">✓ Clear document checklist</div><div class="trust-item">✓ On-time filing & compliance</div><div class="trust-item">✓ Transparent process</div></div>
+</div>
+
+<section id="contact" class="contact-section">
+  <div class="section-header"><div class="section-tag">Get In Touch</div><h2 class="section-title">Start a <em>conversation</em></h2></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-label">Office Address</div>
+        <div class="contact-value">Shop No. 97, First Floor</div>
+        <div class="contact-sub">Near Satya Hotel, Beside Pragya Battery, Waidhan, Madhya Pradesh 486886</div>
+        <div class="contact-actions">
+          <a class="btn-small" href="https://www.google.com/maps/dir/?api=1&destination=24.0714228,82.6218712" target="_blank" rel="noopener noreferrer">Directions</a>
+          <a class="btn-small" href="https://www.google.com/maps/place/CA+PANKAJ+DWIVEDI/@24.0714228,82.6028168,2941m/data=!3m1!1e3!4m10!1m2!2m1!1sshop+no+97+first+floor+near+satya+hotel+beside+pragya+battery+waidhan+madhya+pradesh+486886!3m6!1s0x398f372ad71c05bb:0xf981ec5e393e9dec!8m2!3d24.0714228!4d82.6218712!15sCltzaG9wIG5vIDk3IGZpcnN0IGZsb29yIG5lYXIgc2F0eWEgaG90ZWwgYmVzaWRlIHByYWd5YSBiYXR0ZXJ5IHdhaWRoYW4gbWFkaHlhIHByYWRlc2ggNDg2ODg2Wl0iW3Nob3Agbm8gOTcgZmlyc3QgZmxvb3IgbmVhciBzYXR5YSBob3RlbCBiZXNpZGUgcHJhZ3lhIGJhdHRlcnkgd2FpZGhhbiBtYWRoeWEgcHJhZGVzaCA0ODY4ODaSARRjaGFydGVyZWRfYWNjb3VudGFudJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOS04wdExhM1pSUlJBQuABAPoBBAgAEBc!16s%2Fg%2F11sv56nk33?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">View on Maps</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:+918871887087" style="color:inherit; text-decoration:none;">088718 87087</a></div>
+        <div class="contact-sub">Open · Closes 7:00 PM</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Google Reviews</div>
+        <div class="contact-value">5.0 ★</div>
+        <div class="contact-sub">Based on 8 Google reviews</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Map</div>
+      <iframe
+        class="map-embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=CA%20PANKAJ%20DWIVEDI&ll=24.0714228,82.6218712&z=16&output=embed"
+        title="CA Pankaj Dwivedi - Waidhan (Map)"></iframe>
+      <div class="contact-actions" style="margin-top:16px;">
+        <a class="btn-small" href="https://www.google.com/maps/dir/?api=1&destination=24.0714228,82.6218712" target="_blank" rel="noopener noreferrer">Directions</a>
+        <a class="btn-small" href="tel:+918871887087">Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">CA PANKAJ DWIVEDI</div>
+      <div class="footer-desc">Chartered Accountant in Waidhan, Madhya Pradesh. ITR · GST · TDS · Accounting · Compliance.</div>
+      <div class="social-links">
+        <a href="tel:+918871887087" class="social-link" aria-label="Call">☎</a>
+        <a href="https://www.google.com/maps/place/CA+PANKAJ+DWIVEDI/@24.0714228,82.6028168,2941m/data=!3m1!1e3!4m10!1m2!2m1!1sshop+no+97+first+floor+near+satya+hotel+beside+pragya+battery+waidhan+madhya+pradesh+486886!3m6!1s0x398f372ad71c05bb:0xf981ec5e393e9dec!8m2!3d24.0714228!4d82.6218712!15sCltzaG9wIG5vIDk3IGZpcnN0IGZsb29yIG5lYXIgc2F0eWEgaG90ZWwgYmVzaWRlIHByYWd5YSBiYXR0ZXJ5IHdhaWRoYW4gbWFkaHlhIHByYWRlc2ggNDg2ODg2Wl0iW3Nob3Agbm8gOTcgZmlyc3QgZmxvb3IgbmVhciBzYXR5YSBob3RlbCBiZXNpZGUgcHJhZ3lhIGJhdHRlcnkgd2FpZGhhbiBtYWRoeWEgcHJhZGVzaCA0ODY4ODaSARRjaGFydGVyZWRfYWNjb3VudGFudJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOS04wdExhM1pSUlJBQuABAPoBBAgAEBc!16s%2Fg%2F11sv56nk33?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Maps">⌖</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul class="footer-links"><li><a href="#services">Income Tax (ITR)</a></li><li><a href="#services">GST Services</a></li><li><a href="#services">TDS / TCS</a></li><li><a href="#services">Accounting</a></li></ul></div>
+    <div class="footer-col"><h4>Visit</h4><ul class="footer-links"><li><a href="#contact">Address</a></li><li><a href="#contact">Directions</a></li><li><a href="#contact">Map</a></li><li><a href="tel:+918871887087">Call</a></li></ul></div>
+    <div class="footer-col"><h4>Hours</h4><ul class="footer-links"><li><a href="#contact">Open · Closes 7:00 PM</a></li><li><a href="#contact">Mon–Sat</a></li><li><a href="#contact">Best to call before visit</a></li><li><a href="#contact">Walk-ins as available</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> CA Pankaj Dwivedi. All rights reserved.</div>
+    <div>
+      <span style="color:inherit;">Made by</span>
+      <a href="#" style="color:inherit; text-decoration:none;">Web Scratch</a>
+      · <a href="#contact" style="color:inherit; text-decoration:none;">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('out'), 1500));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50));
+
+// Reveal animations
+const revealElements = document.querySelectorAll('.reveal-up, .reveal-left');
+const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('active')), { threshold: 0.1 });
+revealElements.forEach(el => observer.observe(el));
+
+// Background Canvas (lightweight + avoids "glitchy" feel on some PCs)
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canvas = document.getElementById('bgCanvas');
+if (!prefersReducedMotion && canvas) {
+  const ctx = canvas.getContext('2d');
+  let width = 0, height = 0, dpr = 1;
+  function resizeCanvas() {
+    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    width = Math.floor(window.innerWidth);
+    height = Math.floor(window.innerHeight);
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+
+  const particleCount = Math.min(42, Math.max(18, Math.floor((width * height) / 45000)));
+  const particles = Array.from({ length: particleCount }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    size: Math.random() * 12 + 6,
+    speed: Math.random() * 0.28 + 0.08,
+    alpha: Math.random() * 0.18 + 0.05,
+    char: '₹'
+  }));
+
+  let rafId = 0;
+  function drawParticles() {
+    if (document.hidden) { rafId = requestAnimationFrame(drawParticles); return; }
+    ctx.clearRect(0, 0, width, height);
+    for (const p of particles) {
+      p.y -= p.speed;
+      if (p.y < -30) { p.y = height + 30; p.x = Math.random() * width; }
+      ctx.font = `${p.size}px 'Cormorant Garamond'`;
+      ctx.fillStyle = `rgba(198, 161, 91, ${p.alpha})`;
+      ctx.fillText(p.char, p.x, p.y);
+    }
+    rafId = requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) return;
+    if (!rafId) drawParticles();
+  }, { passive: true });
+} else if (canvas) {
+  canvas.style.display = 'none';
+}
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
